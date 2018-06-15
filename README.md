@@ -15,6 +15,23 @@ git clone https://github.com/bxav/greenxgames-challenge-maker.git
 
 ## Open source project used
 
+
+## Backend Development
+
+### Run on your local
+```bash
+cd backend
+docker-compose up -d
+```
+### Run Test
+
+```bash
+# Run end to end test 
+docker-compose exec php bin/console
+
+```
+
+
 ## Folder Structure
 
 ```bash
