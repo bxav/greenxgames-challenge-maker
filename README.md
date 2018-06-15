@@ -13,7 +13,7 @@ git clone https://github.com/bxav/greenxgames-challenge-maker.git
 
 ## Architecture
 
-## Open source project used
+## Open source projects used
 
 
 ## Backend Development
@@ -38,6 +38,6 @@ docker-compose exec php bin/console
 .
 |scripts/
 |...deploy-from-local.sh
-|infrastructure/ # Terraform file to deploy everything to azure
+|infrastructure/ # Terraform files to deploy everything to azure
 ```
 
