@@ -43,6 +43,14 @@ class EntityContext implements Context
         $this->theFollowingEntities(\App\Entity\Challenge::class, $table);
     }
 
+    /**
+     * @Given /^the following things:?$/
+     */
+    public function theFollowingThings(TableNode $table)
+    {
+        $this->theFollowingEntities(\App\Entity\Thing::class, $table);
+    }
+
     private function theFollowingEntities(string $entityName, TableNode $table)
     {
         $rows = $table->getRows();
