@@ -27,7 +27,7 @@ docker-compose up -d
 
 ```bash
 # Run end to end test 
-docker-compose exec php bin/console
+docker-compose exec php bin/behat
 
 ```
 
