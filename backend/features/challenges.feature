@@ -18,16 +18,17 @@ Feature: Manage Challenges
       {
         "id": "a349e23f-ae57-487c-88ee-2efa49684fd7",
         "attributes": "@array@.count(2)",
-        "name": "@string@"
+        "name": "@string@",
+        "thing": null
       },
       {
         "id": "d54f18be-fca1-4b8d-b389-12eb288935f4",
         "attributes": "@array@.count(1)",
-        "name": "@string@"
+        "name": "@string@",
+        "thing": null
       }
     ]
     """
-
 
   @createSchema
   Scenario: Get a Challenge
@@ -48,6 +49,53 @@ Feature: Manage Challenges
       "@type": "Challenge",
       "id": @uuid@,
       "attributes": "@array@.count(2)",
-      "name": "@string@"
+      "name": "@string@",
+      "thing": null
+    }
+    """
+
+  @createSchema
+  Scenario: Get challenges by thing
+    Given the following things:
+      | id |
+      | d54f18be-fca1-4b8d-b389-12eb288935f4 |
+      | d54f18be-fca1-4b8d-b389-12eb288935f5 |
+    Given the following challenges:
+      | thing                                |
+      | d54f18be-fca1-4b8d-b389-12eb288935f4 |
+      | d54f18be-fca1-4b8d-b389-12eb288935f4 |
+      | d54f18be-fca1-4b8d-b389-12eb288935f5 |
+    When I add "Accept" header equal to "application/ld+json"
+    And I send a "GET" request to "/challenges?thing=d54f18be-fca1-4b8d-b389-12eb288935f4"
+    Then the response status code should be 200
+    And the response should be in JSON
+    And the header "Content-Type" should be equal to "application/ld+json; charset=utf-8"
+    And the response should match:
+    """
+    {
+        "@context": "/contexts/Challenge",
+        "@id": "/challenges",
+        "@type": "hydra:Collection",
+        "hydra:totalItems": 2,
+        "hydra:member": [
+            {
+                "@id": "@string@",
+                "@type": "Challenge",
+                "id": @uuid@,
+                "attributes":[],
+                "name":"unnamed",
+                "thing": "/things/d54f18be-fca1-4b8d-b389-12eb288935f4"
+            },
+            {
+                "@id": "@string@",
+                "@type": "Challenge",
+                "id": @uuid@,
+                "attributes":[],
+                "name":"unnamed",
+                "thing": "/things/d54f18be-fca1-4b8d-b389-12eb288935f4"
+            }
+        ],
+        "hydra:view": @array@,
+        "hydra:search": @array@
     }
     """

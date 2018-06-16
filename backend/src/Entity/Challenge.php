@@ -2,15 +2,18 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
  * @ApiResource()
+ * @ApiFilter(SearchFilter::class, properties={"thing": "exact"})
  */
 class Challenge
 {
@@ -38,6 +41,14 @@ class Challenge
      * @ApiProperty()
      */
     private $name = "unnamed";
+
+    /**
+     * @var Thing
+     *
+     * @ORM\ManyToOne(targetEntity="App\Entity\Thing")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $thing;
 
     public function __construct()
     {
@@ -67,5 +78,15 @@ class Challenge
     public function setName(string $name): void
     {
         $this->name = $name;
+    }
+
+    public function getThing():? Thing
+    {
+        return $this->thing;
+    }
+
+    public function setThing(Thing $thing): void
+    {
+        $this->thing = $thing;
     }
 }

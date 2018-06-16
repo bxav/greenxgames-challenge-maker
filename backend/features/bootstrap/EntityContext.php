@@ -99,6 +99,14 @@ class EntityContext implements Context
             if ($values['attributes']) {
                 $entity->setAttributes($this->parseAttributes($values['attributes']));
             }
+
+            if ($values['thing']) {
+                $thing = $this->doctrine->getManager()
+                    ->getRepository(\App\Entity\Thing::class)
+                    ->find($values['thing']);
+
+                $entity->setThing($thing);
+            }
         }
     }
 }
