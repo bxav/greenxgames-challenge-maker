@@ -8,7 +8,15 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { UserPage } from "../pages/user/user";
-import {ThingPage} from "../pages/thing/thing";
+import { ThingPage } from "../pages/thing/thing";
+import {RestangularConfigFactory} from "./core/RestangularConfigFactory";
+import {RestangularModule} from "ngx-restangular";
+import {ChallengesService, ThingsService} from "./core/challenge-maker";
+
+export function createRestangularConfigFactory(RestangularProvider) {
+  return RestangularConfigFactory(RestangularProvider, { baseUrl: 'http://localhost:8080' });
+}
+
 
 @NgModule({
   declarations: [
@@ -19,6 +27,7 @@ import {ThingPage} from "../pages/thing/thing";
   ],
   imports: [
     BrowserModule,
+    RestangularModule.forRoot([], createRestangularConfigFactory),
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -31,6 +40,8 @@ import {ThingPage} from "../pages/thing/thing";
   providers: [
     StatusBar,
     SplashScreen,
+    ThingsService,
+    ChallengesService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
