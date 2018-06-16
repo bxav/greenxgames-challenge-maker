@@ -18,11 +18,13 @@ export class ThingPage implements OnInit{
   }
 
   ngOnInit() {
-    this.loadEntities();
+    let thingId = location.search.split('thing=')[1];
+    console.log(thingId);
+    this.loadEntities(thingId);
   }
 
-  private loadEntities() {
-    this.challengesService.getAll().subscribe((challenges: Challenge[]) => {
+  private loadEntities(thingId: string) {
+    this.challengesService.getAll(undefined, {thing: thingId}).subscribe((challenges: Challenge[]) => {
       console.log(challenges);
       this.challenges = challenges;
     });
