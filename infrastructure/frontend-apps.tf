@@ -30,3 +30,15 @@ resource "azurerm_app_service" "thing-scanner" {
   #   "SOME_KEY" = "some-value"
   # }
 }
+
+output "apps_resource_group_name" {
+  value = "${azurerm_resource_group.frontend.name}"
+}
+
+output "app_thing_scanner_name" {
+  value = "${azurerm_app_service.thing-scanner.name}"
+}
+
+output "app_thing_scanner_hostname" {
+  value = "https://${azurerm_app_service.thing-scanner.default_site_hostname}"
+}

@@ -13,8 +13,10 @@ import {RestangularConfigFactory} from "./core/RestangularConfigFactory";
 import {RestangularModule} from "ngx-restangular";
 import {ChallengesService, ThingsService} from "./core/challenge-maker";
 
+import { environment } from '../environments/environment';
+
 export function createRestangularConfigFactory(RestangularProvider) {
-  return RestangularConfigFactory(RestangularProvider, { baseUrl: 'http://localhost:8080' });
+  return RestangularConfigFactory(RestangularProvider, { baseUrl: environment.greenGameUrl });
 }
 
 
