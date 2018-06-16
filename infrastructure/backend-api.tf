@@ -153,7 +153,7 @@ DEPLOY
 
   parameters {
     name = "${var.env}-backend-api-${random_integer.rg.result}-app"
-    image = "${var.registry_name}/adicode/backend-api:${var.env}"
+    image = "${var.registry_name}/greengame/backend-api:${var.env}"
     app_service_plan_id = "${azurerm_app_service_plan.product.id}"
     docker_registry_url = "https://${azurerm_container_registry.common.login_server}"
     docker_registry_username = "${azurerm_container_registry.common.admin_username}"
@@ -165,7 +165,7 @@ DEPLOY
   deployment_mode = "Incremental"
 }
 
-output "product_api_name" {
+output "backend_api_name" {
   value = "${var.env}-backend-api-${random_integer.rg.result}-app"
 }
 
