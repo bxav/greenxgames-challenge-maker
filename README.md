@@ -31,6 +31,14 @@ docker-compose exec php bin/behat
 
 ```
 
+## Frontend Development
+
+### Run on your local
+```bash
+cd frontend
+npm install
+ionic serve
+```
 
 ## Folder Structure
 
