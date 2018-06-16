@@ -10,14 +10,14 @@ variable "psql_database_name" {
   default     = "backend"
 }
 
-resource "random_string" "db-password" {
+resource "random_string" "new-db-password" {
   length = 16
   special = true
   override_special = "/@\" "
 }
 
 
-resource "azurerm_resource_group" "product-db" {
+resource "azurerm_resource_group" "backend-db" {
   name     = "greengame-${var.locationShort}-backend-db-${random_integer.rg.result}rg"
   location = "${var.location}"
 
@@ -28,10 +28,10 @@ resource "azurerm_resource_group" "product-db" {
   }
 }
 
-resource "azurerm_postgresql_server" "product-db" {
+resource "azurerm_postgresql_server" "backend-db" {
   name                = "greengame-${var.locationShort}-backend-db-${random_integer.rg.result}"
-  location            = "${azurerm_resource_group.product-db.location}"
-  resource_group_name = "${azurerm_resource_group.product-db.name}"
+  location            = "${azurerm_resource_group.backend-db.location}"
+  resource_group_name = "${azurerm_resource_group.backend-db.name}"
 
   sku {
     name = "B_Gen4_2"
@@ -47,7 +47,7 @@ resource "azurerm_postgresql_server" "product-db" {
   }
 
   administrator_login          = "${var.psql_administrator_login}"
-  administrator_login_password = "${random_string.db-password.result}"
+  administrator_login_password = "${random_string.new-db-password.result}"
 
   version = "9.6"
   ssl_enforcement = "Enabled"
@@ -55,8 +55,8 @@ resource "azurerm_postgresql_server" "product-db" {
 
 resource "azurerm_postgresql_database" "backend-db" {
   name                = "${var.psql_database_name}"
-  resource_group_name = "${azurerm_resource_group.product-db.name}"
-  server_name         = "${azurerm_postgresql_server.product-db.name}"
+  resource_group_name = "${azurerm_resource_group.backend-db.name}"
+  server_name         = "${azurerm_postgresql_server.backend-db.name}"
   charset             = "UTF8"
   collation           = "English_United States.1252"
 }
@@ -70,6 +70,6 @@ output "psql_administrator_login" {
 }
 
 output "psql_administrator_password" {
-  value = "${random_string.db-password.result}"
+  value = "${random_string.new-db-password.result}"
 }
 

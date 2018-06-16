@@ -158,7 +158,7 @@ DEPLOY
     docker_registry_url = "https://${azurerm_container_registry.common.login_server}"
     docker_registry_username = "${azurerm_container_registry.common.admin_username}"
     docker_registry_password = "${azurerm_container_registry.common.admin_password}"
-    product_database_url = "pgsql://${azurerm_postgresql_server.product-db.administrator_login}@${azurerm_postgresql_database.backend-db.server_name}:${azurerm_postgresql_server.product-db.administrator_login_password}@${azurerm_postgresql_server.product-db.fqdn}/${azurerm_postgresql_database.backend-db.name}"
+    product_database_url = "pgsql://${azurerm_postgresql_server.backend-db.administrator_login}@${azurerm_postgresql_database.backend-db.server_name}:${azurerm_postgresql_server.backend-db.administrator_login_password}@${azurerm_postgresql_server.backend-db.fqdn}/${azurerm_postgresql_database.backend-db.name}"
     trusted_host = "localhost,api,${var.env}-backend-api-${random_integer.rg.result}-app.azurewebsites.net"
   }
 

@@ -24,16 +24,16 @@ export FRONTEND_APP_RG=`terraform output apps_resource_group_name`
 export APP_THING_SCANNER_NAME=`terraform output app_thing_scanner_name`
 
 # Build and Deploy the backend api
-#
-#cd ../backend;
-#
-#docker build . -t $CONTAINER_REGISTRY_SERVER/adicode/product-api:$ENV;
-#
-#docker login $CONTAINER_REGISTRY_SERVER --username $CONTAINER_REGISTRY_USERNAME --password $CONTAINER_REGISTRY_PASSWORD;
-#
-#docker push $CONTAINER_REGISTRY_SERVER/greengame/backend-api:$ENV
-#
-#az webapp config container set --name $BACKEND_API_NAME --resource-group $APIS_RG --docker-custom-image-name $CONTAINER_REGISTRY_SERVER/greengame/backend-api:$ENV --docker-registry-server-url https://$CONTAINER_REGISTRY_SERVER --docker-registry-server-user $CONTAINER_REGISTRY_USERNAME --docker-registry-server-password $CONTAINER_REGISTRY_PASSWORD
+
+cd ../backend;
+
+docker build . -t $CONTAINER_REGISTRY_SERVER/greengame/backend-api:$ENV;
+
+docker login $CONTAINER_REGISTRY_SERVER --username $CONTAINER_REGISTRY_USERNAME --password $CONTAINER_REGISTRY_PASSWORD;
+
+docker push $CONTAINER_REGISTRY_SERVER/greengame/backend-api:$ENV
+
+az webapp config container set --name $BACKEND_API_NAME --resource-group $APIS_RG --docker-custom-image-name $CONTAINER_REGISTRY_SERVER/greengame/backend-api:$ENV --docker-registry-server-url https://$CONTAINER_REGISTRY_SERVER --docker-registry-server-user $CONTAINER_REGISTRY_USERNAME --docker-registry-server-password $CONTAINER_REGISTRY_PASSWORD
 
 
 # Build and Deploy the frontend apps
