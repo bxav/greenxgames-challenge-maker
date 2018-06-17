@@ -1,29 +1,19 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Thing</ion-title>
+    <ion-title>Défis</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <ion-list>
     <ion-list-header>
-      Available Challenge
+      Green Challenges
     </ion-list-header>
-
     <ion-item-sliding *ngFor="let challenge of challenges">
-      <ion-item>
-        <h2>{{ challenge.name }}</h2>
-      </ion-item>
-      <ion-item-options>
-        <button ion-button color="light" icon-start>
-          <ion-icon name="ios-more"></ion-icon>
-          More info
-        </button>
-        <button ion-button color="primary" icon-start>
-          <ion-icon name="text"></ion-icon>
-          Accept
-        </button>
-      </ion-item-options>
+      <button ion-item (click)="challengeSelected(challenge)">
+        <h2>{{ challenge.type === 'quiz' ? 'Quiz' : 'Défis' }}</h2>
+        <h3>{{ challenge.name }}</h3>
+      </button>
     </ion-item-sliding>
   </ion-list>
 </ion-content>

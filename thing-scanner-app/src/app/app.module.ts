@@ -14,6 +14,7 @@ import {RestangularModule} from "ngx-restangular";
 import {ChallengesService, ThingsService} from "./core/challenge-maker";
 
 import { environment } from '../environments/environment';
+import {QuizPage} from "../pages/quiz/quiz";
 
 export function createRestangularConfigFactory(RestangularProvider) {
   return RestangularConfigFactory(RestangularProvider, { baseUrl: environment.greenGameUrl });
@@ -25,7 +26,8 @@ export function createRestangularConfigFactory(RestangularProvider) {
     MyApp,
     UserPage,
     TabsPage,
-    ThingPage
+    ThingPage,
+    QuizPage,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +39,8 @@ export function createRestangularConfigFactory(RestangularProvider) {
     MyApp,
     UserPage,
     TabsPage,
-    ThingPage
+    ThingPage,
+    QuizPage,
   ],
   providers: [
     StatusBar,
