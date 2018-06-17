@@ -35,13 +35,23 @@ docker-compose exec php bin/behat
 
 ```
 
-## Frontend Development
+## Frontend App Development (Progressive Web App)
+Can be launched from any phone that can read Nfc or QrCode
 
 ### Run on your local
 ```bash
-cd frontend
+cd challenge-reader-app
 npm install
 ionic serve
+```
+
+## Challenge Maker App Development (Android App)
+
+### Run on your local
+```bash
+cd challenge-maker-app
+npm install
+ionic run serve:android # connect your phone first
 ```
 
 ## Folder Structure
@@ -49,7 +59,11 @@ ionic serve
 ```bash
 .
 |scripts/
-|...deploy-from-local.sh
+|...deploy-from-local.sh # Helper to deploy everything in the cloud from your local
+|infrastructure/ # Terraform files to deploy everything to azure
+|challenge-reader-app/ # Frontend App (to participate to challenges)
+|challenge-maker-app/ # Android App (to create NfcTag and create challenges)
+|backend/ # Rest api that manage the all logic
 |infrastructure/ # Terraform files to deploy everything to azure
 ```
 
