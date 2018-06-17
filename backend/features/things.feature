@@ -20,3 +20,26 @@ Feature: Manage Things
       "name": "@string@"
     }
     """
+
+  Scenario: Create a thing
+    When I add "Content-Type" header equal to "application/ld+json"
+    And I add "Accept" header equal to "application/ld+json"
+    And I send a "POST" request to "/things" with body:
+    """
+    {
+      "name": "name-test"
+    }
+    """
+    Then the response status code should be 201
+    And the response should be in JSON
+    And the header "Content-Type" should be equal to "application/ld+json; charset=utf-8"
+    And the response should match:
+    """
+    {
+      "@context": "/contexts/Thing",
+      "@id": "@string@.startsWith('/things/')",
+      "@type": "Thing",
+      "id": @uuid@,
+      "name": "name-test"
+    }
+    """

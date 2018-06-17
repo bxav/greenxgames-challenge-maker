@@ -3,5 +3,6 @@ export class Thing {
   get _resource(): string { return Thing._resource; };
 
   id: string;
+  name: string;
 }
 

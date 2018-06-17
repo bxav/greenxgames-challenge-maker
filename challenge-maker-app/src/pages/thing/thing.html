@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Thing
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label color="primary">Name</ion-label>
+    <ion-input placeholder="Text Input" [(ngModel)]="thing.name"></ion-input>
+  </ion-item>
+</ion-content>
+<ion-footer no-shadow>
+  <ion-toolbar position="bottom">
+    <button *ngIf="mode === 'new'" ion-button full (click)="openCreateTag()">Write Tag</button>
+    <button *ngIf="mode === 'update'" ion-button full (click)="openCreateTag()">Write Tag</button>
+    <button *ngIf="mode === 'update'" ion-button full (click)="openChallengeList()">Go to Challenge List</button>
+  </ion-toolbar>
+</ion-footer>

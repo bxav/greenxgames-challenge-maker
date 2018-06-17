@@ -3,6 +3,7 @@ import {AfterViewInit, Component} from '@angular/core';
 import {App, NavController} from 'ionic-angular';
 import {Thing} from "../../app/core/challenge-maker/model";
 import {ThingsService} from "../../app/core/challenge-maker";
+import {ThingPage} from "../thing/thing";
 
 @Component({
   selector: 'page-thing-list',
@@ -36,10 +37,10 @@ export class ThingListPage implements AfterViewInit {
   }
 
   thingSelected(thing: Thing) {
-    // this.navCtrl.push(ThingPage, { thingId: thing.id });
+    this.navCtrl.push(ThingPage, { thingId: thing.id });
   }
 
   createThing() {
-    // this.navCtrl.push(ThingPage);
+    this.navCtrl.push(ThingPage);
   }
 }

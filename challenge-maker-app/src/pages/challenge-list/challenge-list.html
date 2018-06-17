@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Challenge list
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+
+    <ion-item-sliding *ngFor="let challenge of challenges">
+
+      <button ion-item (click)="challengeSelected(challenge)">
+        <h2>{{ challenge.id | limitTo: 3 }}</h2>
+        <h3>{{ challenge.name }}</h3>
+      </button>
+
+      <ion-item-options side="right">
+        <button ion-button color="primary" (click)="createChallenge(challenge)">
+          <ion-icon name="config"></ion-icon>
+          Clone
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
+<ion-footer no-shadow>
+  <ion-toolbar position="bottom">
+    <button ion-button full (click)="createChallenge()">Create new Challenge</button>
+  </ion-toolbar>
+</ion-footer>
