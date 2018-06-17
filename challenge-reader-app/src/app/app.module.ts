@@ -15,6 +15,7 @@ import {ChallengesService, ThingsService} from "./core/challenge-maker";
 
 import { environment } from '../environments/environment';
 import {QuizPage} from "../pages/quiz/quiz";
+import {AuthService} from "./auth/auth.service";
 
 export function createRestangularConfigFactory(RestangularProvider) {
   return RestangularConfigFactory(RestangularProvider, { baseUrl: environment.greenGameUrl });
@@ -47,6 +48,7 @@ export function createRestangularConfigFactory(RestangularProvider) {
     SplashScreen,
     ThingsService,
     ChallengesService,
+    AuthService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

@@ -3,6 +3,7 @@ import {AlertController, NavController} from 'ionic-angular';
 import {ChallengesService} from "../../app/core/challenge-maker";
 import {Challenge} from "../../app/core/challenge-maker/model";
 import {QuizPage} from "../quiz/quiz";
+import {AuthService} from "../../app/auth/auth.service";
 
 @Component({
   selector: 'page-thing',
@@ -14,7 +15,8 @@ export class ThingPage implements OnInit{
   constructor(
     private alertCtrl: AlertController,
     public navCtrl: NavController,
-    public challengesService: ChallengesService
+    public challengesService: ChallengesService,
+    public authServie: AuthService
   ) {
 
   }
@@ -30,11 +32,13 @@ export class ThingPage implements OnInit{
     if (challenge.type == 'quiz') {
       this.navCtrl.push(QuizPage, { challenge: challenge });
     } else {
-      this.presentChallengeComfirm();
+      if (!this.authServie.isAuthenticated()) {
+        this.authServie.login();
+      } else {
+        this.presentChallengeComfirm();
+      }
     }
   }
-
-
 
   private presentChallengeComfirm() {
     let alert = this.alertCtrl.create({
