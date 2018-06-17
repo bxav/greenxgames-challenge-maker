@@ -38,14 +38,14 @@ az webapp config container set --name $BACKEND_API_NAME --resource-group $APIS_R
 
 # Build and Deploy the frontend apps
 cd ..
-(cd thing-scanner-app; npm run ionic:build --prod);
+(cd challenge-reader-app; npm run ionic:build --prod);
 
 rm -rf var
 
-mkdir -p var/deploy/thing-scanner-app;
+mkdir -p var/deploy/challenge-reader-app;
 
-cp -r thing-scanner-app/www/* var/deploy/thing-scanner-app/;
+cp -r challenge-reader-app/www/* var/deploy/challenge-reader-app/;
 
-(cd var/deploy/thing-scanner-app/; zip -r ../thing-scanner-app.zip .);
+(cd var/deploy/challenge-reader-app/; zip -r ../challenge-reader-app.zip .);
 
-az webapp deployment source config-zip --resource-group $FRONTEND_APP_RG --name $APP_THING_SCANNER_NAME --src var/deploy/thing-scanner-app.zip
+az webapp deployment source config-zip --resource-group $FRONTEND_APP_RG --name $APP_THING_SCANNER_NAME --src var/deploy/challenge-reader-app.zip
