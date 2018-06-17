@@ -1,4 +1,4 @@
-# Challenge Maker
+# Green Challenges
 This project was developed by team 'Challenge Maker',  under 48 hrs for https://sogeti-greenxgames.bemyapp.com/
 
 ## Get the code locally
@@ -6,7 +6,7 @@ This project was developed by team 'Challenge Maker',  under 48 hrs for https://
 git clone https://github.com/bxav/greenxgames-challenge-maker.git
 ```
 
-## Deploy everything from you local
+## Deploy everything from your local machine
 ```bash
 ./scripts/deploy-from-local.sh
 ```
@@ -15,8 +15,10 @@ git clone https://github.com/bxav/greenxgames-challenge-maker.git
 
 ![architecture](archi.png "Azure architecture")
 
-## Open source projects used
-
+## Open source libraries and projects used
+* [Ionic](https://api-platform.com/): Used for the ChallengeReader and the android app ChallengeMaker
+* [Terraform](https://api-platform.com/): Used to deploy our infrastructure to Azure
+* [Api plateform](https://api-platform.com/): Used to build our main Rest api
 
 ## Backend Development
 
