@@ -16,7 +16,7 @@ export class ThingPage implements OnInit{
     private alertCtrl: AlertController,
     public navCtrl: NavController,
     public challengesService: ChallengesService,
-    public authServie: AuthService
+    public authService: AuthService
   ) {
 
   }
@@ -32,8 +32,8 @@ export class ThingPage implements OnInit{
     if (challenge.type == 'quiz') {
       this.navCtrl.push(QuizPage, { challenge: challenge });
     } else {
-      if (!this.authServie.isAuthenticated()) {
-        this.authServie.login();
+      if (!this.authService.isAuthenticated()) {
+        this.authService.login();
       } else {
         this.presentChallengeComfirm();
       }

@@ -1,5 +1,5 @@
 # Green Challenges
-This project was developed by team 'Challenge Maker',  under 48 hrs for https://sogeti-greenxgames.bemyapp.com/
+This project was developed by team 'Green Challenges',  under 48 hrs for https://sogeti-greenxgames.bemyapp.com/
 
 ## Get the code locally
 ```

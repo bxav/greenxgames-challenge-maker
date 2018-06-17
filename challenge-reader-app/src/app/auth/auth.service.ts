@@ -3,8 +3,6 @@ import { Injectable } from '@angular/core';
 import { NavController} from 'ionic-angular';
 import { filter } from 'rxjs/operators';
 import * as auth0 from 'auth0-js';
-import {QuizPage} from "../../pages/quiz/quiz";
-import {ThingPage} from "../../pages/thing/thing";
 
 import { environment } from '../../environments/environment';
 
@@ -59,8 +57,6 @@ export class AuthService {
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
-    // Go back to the home route
-    this.router.navigate(['/']);
   }
 
   public isAuthenticated(): boolean {
