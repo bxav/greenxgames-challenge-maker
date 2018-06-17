@@ -13,6 +13,8 @@ git clone https://github.com/bxav/greenxgames-challenge-maker.git
 
 ## Architecture
 
+![architecture](archi.png "Azure architecture")
+
 ## Open source projects used
 
 
