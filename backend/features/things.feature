@@ -16,6 +16,7 @@ Feature: Manage Things
       "@context": "/contexts/Thing",
       "@id": "@string@.startsWith('/things/')",
       "@type": "Thing",
-      "id": @uuid@
+      "id": @uuid@,
+      "name": "@string@"
     }
     """

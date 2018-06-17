@@ -12,12 +12,6 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        $thing = new Thing();
 
-        $manager->persist($thing);
-
-        $manager->flush();
-
-        $this->addReference(self::MAIN_THING_REF, $thing);
     }
 }

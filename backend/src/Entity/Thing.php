@@ -23,6 +23,13 @@ class Thing
      */
     private $id;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true, options={"default" : "unnamed"})
+     * @ApiProperty()
+     */
+    private $name = "unnamed";
 
     public function __construct()
     {
@@ -32,5 +39,15 @@ class Thing
     public function getId(): string
     {
         return $this->id;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): void
+    {
+        $this->name = $name;
     }
 }
