@@ -19,13 +19,14 @@ Feature: Manage Challenges
         "id": "a349e23f-ae57-487c-88ee-2efa49684fd7",
         "attributes": "@array@.count(2)",
         "name": "@string@",
-        "thing": null
+        "thing": null,
+        "value": 0
       },
       {
         "id": "d54f18be-fca1-4b8d-b389-12eb288935f4",
         "attributes": "@array@.count(1)",
         "name": "@string@",
-        "thing": null
+        "value": 0
       }
     ]
     """
@@ -50,7 +51,7 @@ Feature: Manage Challenges
       "id": @uuid@,
       "attributes": "@array@.count(2)",
       "name": "@string@",
-      "thing": null
+      "value": 0
     }
     """
 
@@ -84,7 +85,8 @@ Feature: Manage Challenges
                 "id": @uuid@,
                 "attributes":[],
                 "name":"unnamed",
-                "thing": "/things/d54f18be-fca1-4b8d-b389-12eb288935f4"
+                "thing": "/things/d54f18be-fca1-4b8d-b389-12eb288935f4",
+                "value": 0
             },
             {
                 "@id": "@string@",
@@ -92,7 +94,8 @@ Feature: Manage Challenges
                 "id": @uuid@,
                 "attributes":[],
                 "name":"unnamed",
-                "thing": "/things/d54f18be-fca1-4b8d-b389-12eb288935f4"
+                "thing": "/things/d54f18be-fca1-4b8d-b389-12eb288935f4",
+                "value": 0
             }
         ],
         "hydra:view": @array@,

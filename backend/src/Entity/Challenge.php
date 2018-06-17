@@ -43,6 +43,14 @@ class Challenge
     private $name = "unnamed";
 
     /**
+     * @var int
+     *
+     * @ORM\Column(type="integer", nullable=true, options={"default" : 0})
+     * @ApiProperty()
+     */
+    private $value = 0;
+
+    /**
      * @var Thing
      *
      * @ORM\ManyToOne(targetEntity="App\Entity\Thing")
@@ -78,6 +86,16 @@ class Challenge
     public function setName(string $name): void
     {
         $this->name = $name;
+    }
+
+    public function getValue(): int
+    {
+        return $this->value;
+    }
+
+    public function setValue(int $value): void
+    {
+        $this->value = $value;
     }
 
     public function getThing():? Thing
