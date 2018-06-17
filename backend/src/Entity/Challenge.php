@@ -20,11 +20,13 @@ class Challenge
     const QUIZ = 'quiz';
     const TELEMETRY = 'telemetry';
     const MANUAL = 'manual';
+    const AUTOMATIC = 'automatic';
 
     const TYPES = [
         self::QUIZ,
         self::TELEMETRY,
         self::MANUAL,
+        self::AUTOMATIC,
     ];
 
     /**
