@@ -11,7 +11,6 @@ Feature: Manage Challenges
     Then the response status code should be 200
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And print last response
     And the response should match:
     """
     [
@@ -20,13 +19,19 @@ Feature: Manage Challenges
         "attributes": "@array@.count(2)",
         "name": "@string@",
         "thing": null,
-        "value": 0
+        "value": "@number@",
+        "thing": null,
+        "theme": "@string@",
+        "type": "@string@"
       },
       {
         "id": "d54f18be-fca1-4b8d-b389-12eb288935f4",
         "attributes": "@array@.count(1)",
         "name": "@string@",
-        "value": 0
+        "value": "@number@",
+        "thing": null,
+        "theme": "@string@",
+        "type": "@string@"
       }
     ]
     """
@@ -51,7 +56,10 @@ Feature: Manage Challenges
       "id": @uuid@,
       "attributes": "@array@.count(2)",
       "name": "@string@",
-      "value": 0
+      "value": "@number@",
+      "thing": null,
+      "theme": "@string@",
+      "type": "@string@"
     }
     """
 
@@ -86,7 +94,9 @@ Feature: Manage Challenges
                 "attributes":[],
                 "name":"unnamed",
                 "thing": "/things/d54f18be-fca1-4b8d-b389-12eb288935f4",
-                "value": 0
+                "value": "@number@",
+                "theme": "@string@",
+                "type": "@string@"
             },
             {
                 "@id": "@string@",
@@ -95,7 +105,9 @@ Feature: Manage Challenges
                 "attributes":[],
                 "name":"unnamed",
                 "thing": "/things/d54f18be-fca1-4b8d-b389-12eb288935f4",
-                "value": 0
+                "value": "@number@",
+                "theme": "@string@",
+                "type": "@string@"
             }
         ],
         "hydra:view": @array@,

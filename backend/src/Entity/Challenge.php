@@ -17,6 +17,16 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Challenge
 {
+    const QUIZ = 'quiz';
+    const TELEMETRY = 'telemetry';
+    const MANUAL = 'manual';
+
+    const TYPES = [
+        self::QUIZ,
+        self::TELEMETRY,
+        self::MANUAL,
+    ];
+
     /**
      * @var string
      *
@@ -41,6 +51,22 @@ class Challenge
      * @ApiProperty()
      */
     private $name = "unnamed";
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true, options={"default" : "default"})
+     * @ApiProperty()
+     */
+    private $theme = "default";
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true, options={"default" : "quiz"})
+     * @ApiProperty()
+     */
+    private $type = self::QUIZ;
 
     /**
      * @var int
@@ -86,6 +112,26 @@ class Challenge
     public function setName(string $name): void
     {
         $this->name = $name;
+    }
+
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): void
+    {
+        $this->type = $type;
+    }
+
+    public function getTheme(): string
+    {
+        return $this->theme;
+    }
+
+    public function setTheme(string $theme): void
+    {
+        $this->theme = $theme;
     }
 
     public function getValue(): int
