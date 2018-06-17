@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Thing list
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+
+    <ion-item-sliding *ngFor="let thing of things">
+
+      <button ion-item (click)="thingSelected(thing)">
+        <h2>{{ thing.id | limitTo: 3 }}</h2>
+        <h3>{{ thing.name }}</h3>
+      </button>
+
+      <ion-item-options side="right">
+        <button ion-button color="primary" (click)="createThing(thing)">
+          <ion-icon name="config"></ion-icon>
+          Clone
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
+<ion-footer no-shadow>
+  <ion-toolbar position="bottom">
+    <button ion-button full (click)="createThing()">Create new Thing</button>
+  </ion-toolbar>
+</ion-footer>
